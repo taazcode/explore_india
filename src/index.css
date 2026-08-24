@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Self-hosted type system. Google Fonts ships each family as unicode-range
+   subsets, so a Latin-only visitor never downloads the Devanagari or Bengali
+   files — they are fetched only when translated text actually needs them. */
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/fraunces-0.woff2") format("woff2");unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB}
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/fraunces-1.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/fraunces-2.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Mulish";font-style:normal;font-weight:400 800;font-display:swap;src:url("./assets/fonts/mulish-0.woff2") format("woff2");unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
+@font-face{font-family:"Mulish";font-style:normal;font-weight:400 800;font-display:swap;src:url("./assets/fonts/mulish-1.woff2") format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Mulish";font-style:normal;font-weight:400 800;font-display:swap;src:url("./assets/fonts/mulish-2.woff2") format("woff2");unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB}
+@font-face{font-family:"Mulish";font-style:normal;font-weight:400 800;font-display:swap;src:url("./assets/fonts/mulish-3.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Mulish";font-style:normal;font-weight:400 800;font-display:swap;src:url("./assets/fonts/mulish-4.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Yatra One";font-style:normal;font-weight:400;font-display:swap;src:url("./assets/fonts/yatraone-0.woff2") format("woff2");unicode-range:U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09}
+@font-face{font-family:"Yatra One";font-style:normal;font-weight:400;font-display:swap;src:url("./assets/fonts/yatraone-1.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Yatra One";font-style:normal;font-weight:400;font-display:swap;src:url("./assets/fonts/yatraone-2.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Noto Sans Devanagari";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notodeva-0.woff2") format("woff2");unicode-range:U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09}
+@font-face{font-family:"Noto Sans Devanagari";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notodeva-1.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Noto Sans Devanagari";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notodeva-2.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Noto Sans Bengali";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notobengali-0.woff2") format("woff2");unicode-range:U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1}
+@font-face{font-family:"Noto Sans Bengali";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notobengali-1.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Noto Sans Bengali";font-style:normal;font-weight:400 700;font-display:swap;src:url("./assets/fonts/notobengali-2.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+:root{
+  /* Type system.
+     - display: Fraunces, a warm editorial serif with an optical-size axis, so
+       big headings tighten up and small ones stay readable.
+     - accent:  Yatra One, a Devanagari-styled Latin face. Used sparingly — the
+       wordmark and a few cultural moments — because it is loud by design.
+     - body:    Mulish for everything else.
+     Both stacks end in Noto Sans Devanagari/Bengali so Hindi, Rajasthani,
+     Bengali and Assamese translations render in a real typeface instead of
+     whatever the OS falls back to. */
+  --font-display:'Fraunces','Noto Sans Devanagari','Noto Sans Bengali',Georgia,serif;
+  --font-accent:'Yatra One','Noto Sans Devanagari',Georgia,serif;
+  --font-body:'Mulish','Noto Sans Devanagari','Noto Sans Bengali',system-ui,sans-serif;
+
+  font-family:var(--font-body);
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+
+  /* Ink scale — deeper and warmer than before, so headings carry more weight
+     and body copy clears AA contrast on the cream ground. */
+  --ink:#33200f;
+  --ink-soft:#5c4133;
+  --muted:#7b6455;
+  --line:#eadac4;
+  --cream:#fffaf1;
+  --terracotta:#c2571c;
+  --deep:#98400f;
+  --sage:#5c7f63;
+  --gold:#b8842a;
+  --plum:#7a4b63;
+
+  color:var(--ink);
+  background:var(--cream);
+}
+
+/* Fraunces ships SOFT and WONK axes; a touch of both keeps the headings warm
+   rather than starchy, and optical sizing does the rest automatically. */
+h1,h2,h3,.brand strong{font-variation-settings:'SOFT' 18,'WONK' 1}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:#fffaf1;background-image:radial-gradient(#d47d4414 1px,transparent 1px);background-size:25px 25px}button,input,select{font:inherit}button{cursor:pointer;border:0;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #e5a057;outline-offset:3px}a{color:inherit;text-decoration:none}.app-shell{min-height:100vh;padding-bottom:36px}.topbar{height:76px;padding:0 5.5% 0 7.5%;display:flex;align-items:center;gap:32px;border-bottom:1px solid #f1e5d5;background:#fffaf1e8;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:10px;background:none;text-align:left;min-width:250px}.brand-mark{color:var(--terracotta);border:1px solid #d77a3c;border-radius:50%;width:38px;height:38px;display:grid;place-items:center;background:#fffaf1}.mandala-logo{transition:transform .5s ease}.brand:hover .mandala-logo{transform:rotate(75deg)}.brand strong{display:block;font:700 20px var(--font-display);letter-spacing:-.3px}.brand small{font-size:10px;color:var(--muted);letter-spacing:.2px}.topbar nav{display:flex;gap:30px;align-items:center;flex:1}.topbar nav button{background:none;font-size:12px;font-weight:600;color:#5e4637;position:relative;padding:30px 0}.topbar nav button.active,.topbar nav button:hover{color:var(--terracotta)}.topbar nav button.active:after{content:'';position:absolute;bottom:15px;left:0;right:0;height:2px;background:var(--terracotta);border-radius:2px}.language{border:1px solid #e9cfae;background:#fffaf4;border-radius:22px;padding:9px 12px;display:flex;align-items:center;gap:6px;font-size:11px}.profile-dot{width:34px;height:34px;border-radius:50%;overflow:hidden;display:block;flex:none;border:2px solid #f0a13c;box-shadow:0 2px 6px #6b311c30;transition:transform .2s,border-color .2s}.profile-dot:hover{transform:scale(1.08);border-color:var(--terracotta)}.profile-dot img{width:100%;height:100%;object-fit:cover;object-position:top center}.mobile-menu{display:none;background:none}.side-nav{position:fixed;z-index:11;left:0;top:76px;bottom:36px;width:68px;background:#fffdf8;border-right:1px solid #f0e4d4;display:flex;align-items:center;flex-direction:column;padding-top:20px;gap:8px}.side-nav button{background:transparent;width:100%;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:9px;color:#7d6959}.side-nav button.active,.side-nav button:hover{color:var(--terracotta);background:#fff4e7}.side-nav button.active:before{content:'';width:3px;height:27px;background:var(--terracotta);position:absolute;left:0;border-radius:0 4px 4px 0}.content{margin-left:68px;padding:22px 4.5% 0}.hero-panel{min-height:485px;max-width:1330px;margin:0 auto;border:1px solid #ebdbc5;border-radius:26px;background:linear-gradient(110deg,#fffaf0 12%,#fff5e8 52%,#f7ead8);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr) minmax(0,1.25fr);gap:10px;overflow:hidden;position:relative;box-shadow:0 10px 35px #8b5d3410;align-items:stretch}.hero-panel:before,.panel:before{content:'';position:absolute;inset:0;opacity:.16;pointer-events:none;background-image:radial-gradient(circle at 10% 16%,transparent 0 28px,#e2b786 29px 30px,transparent 31px),radial-gradient(circle at 88% 76%,transparent 0 32px,#e2b786 33px 34px,transparent 35px);background-size:190px 190px}.hero-copy{padding:56px 16px 30px 46px;z-index:1;min-width:0}.eyebrow{display:block;color:var(--terracotta);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;font-size:10px;margin-bottom:8px}.hero-copy h1,.explore-intro h1{font:600 clamp(35px,3.2vw,52px)/1.07 var(--font-display);margin:0 0 18px;letter-spacing:-1.5px}.hero-copy h1 em,.explore-intro h1 em,.experience-top h1 em{font-style:normal;color:var(--terracotta)}.hero-copy p{font-size:14px;line-height:1.7;color:#6f5a4c;max-width:325px;margin:0 0 25px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.primary-btn,.outline-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;padding:13px 18px;font-weight:700;font-size:12px;transition:.2s}.primary-btn{background:var(--terracotta);color:white;box-shadow:0 6px 15px #c75f2338}.primary-btn:hover{background:var(--deep);transform:translateY(-2px)}.outline-btn{border:1px solid #dca575;background:#fffaf2;color:#7a482b}.outline-btn:hover{background:#fff0dc}.stats{display:flex;margin-top:35px;gap:21px}.stats div{display:flex;flex-direction:column;gap:1px;border-right:1px solid #e8cfb4;padding-right:20px}.stats div:last-child{border:0}.stats strong{font:600 20px var(--font-display);color:var(--terracotta)}.stats span{font-size:9px;color:var(--muted)}.hero-map{display:flex;align-items:center;justify-content:center;padding:22px 0 14px;min-width:0}.map-wrap{position:relative;width:100%;max-width:310px}.map-wrap>svg:not(.compass-rose){display:block;width:100%;height:auto;overflow:visible}.map-state{fill:var(--state-color,#e6c08a);stroke:#fff6e9;stroke-width:1.2;transition:fill .18s,filter .18s,transform .18s;cursor:pointer;transform-box:fill-box;transform-origin:center}.map-state.hovered{filter:brightness(1.1) saturate(1.25);stroke:#fff}.map-state.active-state{fill:var(--terracotta);stroke:#fff3e1;stroke-width:2}.map-state.active-state.hovered{fill:#d97033;filter:brightness(1.1);transform:scale(1.015)}.map-state:focus-visible{outline:2px solid var(--terracotta);outline-offset:0}.map-tooltip{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);background:#3b231b;color:#fff8ef;font-size:10px;padding:4px 11px;border-radius:14px;white-space:nowrap;pointer-events:none;z-index:5;box-shadow:0 3px 10px #3b231b40}/* Hero scene: one pre-composed artwork (guide + fort) framed with a cream
+   inset border, matching the reference. Cards float on top of it. */
+.hero-guide{position:relative;padding:16px 16px 16px 0;display:flex;align-items:stretch;min-width:0}
+.guide-scene{flex:1;min-width:0;position:relative;border-radius:22px;overflow:hidden;background:#f3e2c6;padding:7px;box-shadow:0 10px 28px #6b311c1f}
+/* Source art is ~1.76 wide with the guide in the left third, so the portrait
+   container crops the sides. Anchoring left-of-centre keeps him whole. */
+.guide-scene-img{display:block;width:100%;height:100%;object-fit:cover;object-position:8% center;border-radius:16px;transition:transform 6s ease}
+.guide-scene:hover .guide-scene-img{transform:scale(1.04)}.hero-guide-card{position:absolute;top:34px;right:9%;z-index:2;background:#fffaf2f2;border-radius:16px;padding:13px 17px;text-align:center;box-shadow:0 8px 22px #3b231b33;font:600 17px var(--font-display);max-width:47%;backdrop-filter:blur(3px)}.hero-guide-card span{display:block;font:12px var(--font-body);color:#6e5142;margin-top:3px;line-height:1.35}.bubble-tail{position:absolute!important;bottom:-8px;left:26px;width:16px;height:16px;background:#fffaf2;transform:rotate(45deg)}.guide-art{width:88px;height:118px;position:relative;overflow:hidden;border-radius:20px 20px 9px 9px;background:color-mix(in srgb,var(--guide-accent),white 72%);transition:transform .25s,filter .25s,box-shadow .25s;filter:drop-shadow(0 7px 5px #4f27152a);z-index:2}.guide-art:hover{transform:translateY(-7px) scale(1.06);filter:drop-shadow(0 12px 10px #4f27154a);box-shadow:0 0 0 3px color-mix(in srgb,var(--guide-accent),white 30%)}.guide-art img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.guide-art-large{width:195px;height:300px;border-radius:30px 30px 14px 14px}.audio-card{position:absolute;z-index:3;bottom:24px;right:16px;width:min(255px,52%);padding:15px 16px;border-radius:15px;background:#fffaf2f2;box-shadow:0 8px 22px #3b231b33;backdrop-filter:blur(3px)}.audio-title{display:flex;gap:10px;align-items:flex-start}.audio-title strong,.audio-title small{display:block}.audio-title strong{font:600 13px var(--font-display);line-height:1.3}.audio-title small{font-size:10px;color:#7e6453;line-height:1.45;margin-top:5px}.play{width:26px;height:26px;background:var(--terracotta);color:white;border-radius:50%;display:grid;place-items:center;flex:none;transition:transform .2s,background .2s}.audio-card:hover .play{transform:scale(1.1);background:var(--deep)}.audio-line{display:flex;align-items:center;gap:8px;margin-top:12px;color:#8f6e5c;font-size:9px}.audio-line i{flex:1;height:1px;background:#e0b98f}.wave{color:var(--terracotta);letter-spacing:-1px;font-size:19px;line-height:8px}.section-heading{display:flex;align-items:center;justify-content:center;gap:14px;margin:24px auto 16px}.section-heading h2,.panel h2{font:600 22px var(--font-display);margin:0}.ornament{color:var(--terracotta);font-size:25px}.flip{transform:scaleX(-1)}.culture-grid{max-width:1330px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:15px}.culture-card{min-height:170px;text-align:center;border:1px solid #eddcc7;border-radius:17px;background:#fffaf4;position:relative;padding:0 11px 18px;overflow:hidden;transition:transform .25s,box-shadow .25s}.culture-card:hover{transform:translateY(-6px);box-shadow:0 16px 30px #7f4c2525}.card-art{height:100px;margin:0 -11px 12px;position:relative;overflow:hidden;background:#f6e0bd}.card-art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}.culture-card:hover .card-art img{transform:scale(1.09)}.card-art:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#3b231b55,transparent 55%)}.card-badge{position:absolute;left:9px;bottom:8px;width:29px;height:29px;border-radius:50%;background:#fffaf1e8;color:var(--terracotta);display:grid;place-items:center;z-index:1;box-shadow:0 3px 8px #3b231b30}.culture-card strong{display:block;font:600 14px var(--font-display)}.culture-card p{font-size:10px;line-height:1.45;color:#846e5d;margin:5px 0}.card-arrow{display:grid;place-items:center;position:absolute;bottom:8px;right:11px;color:var(--terracotta)}.lower-grid{max-width:1330px;margin:17px auto 0;display:grid;grid-template-columns:1.1fr 1.1fr .9fr;gap:15px}.panel{border:1px solid #eddbc7;border-radius:18px;background:#fffaf4;position:relative;overflow:hidden;padding:20px;box-shadow:0 5px 18px #83563309}.panel-heading{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}.panel-heading h2{margin-top:2px}.mini-note{font-size:9px;color:#9a7a62}.state-picker{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;align-items:center;margin-top:13px;position:relative;z-index:1}.state-picker .map-wrap{max-width:150px;margin:auto}.state-list{display:flex;flex-direction:column;gap:6px}.state-list button{display:flex;align-items:center;gap:7px;background:#fffdf8;border:1px solid #f0dfca;border-radius:8px;padding:6px;text-align:left}.state-list button:hover{border-color:#d78b50;background:#fff4e7}.state-list button:last-child{justify-content:center}.state-thumb{width:34px;height:34px;border-radius:9px;flex:none;overflow:hidden}.state-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}.state-list button:hover .state-thumb img{transform:scale(1.15)}.state-list button span:nth-child(2){flex:1}.state-list strong,.state-list small{display:block}.state-list strong{font-size:10px}.state-list small{font-size:8px;color:#927967}.state-list svg{color:var(--terracotta)}.all-states{font-size:10px;color:var(--terracotta);margin-top:4px}.circle-button{width:29px;height:29px;border-radius:50%;background:#fff1df;color:var(--terracotta)}.guide-row{display:flex;gap:8px;margin-top:13px;position:relative;z-index:1;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px;scrollbar-width:none}.guide-row::-webkit-scrollbar{display:none}.guide-card{flex:0 0 96px;scroll-snap-align:start;background:#fffdf9;border:1px solid #efdcca;border-radius:10px;padding:8px 3px 7px;text-align:center;transition:transform .2s,border-color .2s,background .2s}.guide-card:hover{border-color:#d27a3a;background:#fff4e7;transform:translateY(-3px)}.guide-card .guide-art{margin:auto;width:55px;height:75px}.guide-card strong,.guide-card small{display:block}.guide-card strong{font:600 11px var(--font-display)}.guide-card small{font-size:8px;color:#8d725f;margin-top:2px}.guide-card.preview{opacity:.88}.guide-art-preview img{object-fit:contain!important;object-position:center!important}.preview-tag{display:inline-block;margin-top:5px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#a8471b;background:#fff0dc;border-radius:20px;padding:2px 7px}.carousel-arrows{display:flex;gap:6px}.journey{background:#fff4e3}.paisley-motif{position:absolute;right:-18px;bottom:44px;pointer-events:none;z-index:0}.journey>.panel-heading>svg{color:var(--terracotta)}.progress-row{display:grid;grid-template-columns:1.4fr auto;gap:5px;margin:17px 0 0;position:relative}.progress-row>div:first-child{display:flex;align-items:center;gap:7px;font-size:10px}.progress-row svg{color:var(--terracotta)}.progress-row>strong{font-size:9px;color:#8e705c}.progress{grid-column:1 / -1;height:5px;background:#ead6b9;border-radius:5px}.progress i{display:block;background:var(--terracotta);height:100%;border-radius:5px}.points{position:relative;margin:18px -20px -20px;padding:13px 20px;background:#f0c789;color:#6b472a;font-size:11px;display:flex;gap:7px;align-items:center}.points svg{color:#9d5b1d}.bottom-nav{height:36px;position:fixed;bottom:0;left:68px;right:0;background:#fffdf9;border-top:1px solid #f0e3d3;display:flex;justify-content:space-evenly;z-index:10}.bottom-nav button{background:none;color:#846d5b;display:flex;align-items:center;gap:7px;font-size:10px}.bottom-nav button.active,.bottom-nav button:hover{color:var(--terracotta)}
+
+/* Explore and guide views */.explore-page{max-width:1450px;margin:auto;padding-top:45px}.explore-intro{display:flex;justify-content:space-between;align-items:end;max-width:1200px;margin:0 auto 28px}.explore-intro p{max-width:480px;color:#766153;font-size:14px;line-height:1.6}.search-box{display:flex;align-items:center;gap:9px;background:#fffdf8;border:1px solid #e5d1b7;border-radius:12px;padding:12px 15px;color:#a57856}.search-box input{border:0;background:none;outline:0;font-size:12px;width:180px}.explore-layout{display:grid;grid-template-columns:1.5fr .85fr;gap:17px;max-width:1200px;margin:auto}.map-panel{padding:24px;min-height:620px}.map-panel-head{display:flex;align-items:start;justify-content:space-between;position:relative;z-index:1}.map-panel h2{font-size:23px}.map-panel p{font-size:11px;color:#927665;margin:5px 0}.legend{font-size:9px;color:#876c58;display:flex;align-items:center;gap:5px}.legend i,.legend b{display:inline-block;width:9px;height:9px;background:var(--terracotta);border-radius:50%}.legend b{background:#e4bd83;margin-left:8px}.big-map{display:flex;align-items:center;justify-content:center;height:520px}.big-map .map-wrap{max-width:420px}.explore-side{display:flex;flex-direction:column;gap:17px}.active-guide-list h2{font-size:22px;position:relative}.active-guide-list>button{display:flex;align-items:center;gap:12px;width:100%;background:#fffdf8;border:1px solid #eedcc8;border-radius:12px;padding:8px;margin-top:10px;text-align:left}.active-guide-list>button:hover{border-color:#d87935;transform:translateX(3px)}.active-guide-list>button .guide-art{width:48px;height:62px}.active-guide-list>button span:nth-child(2){flex:1}.active-guide-list strong,.active-guide-list small{display:block}.active-guide-list strong{font:600 14px var(--font-display)}.active-guide-list small{font-size:9px;color:#8e7562;margin-top:3px}.active-guide-list svg{color:var(--terracotta)}.explore-note{background:#f3dfc3;display:flex;gap:12px;color:#714d31}.explore-note>svg{color:var(--terracotta);flex:none}.explore-note strong{font:600 16px var(--font-display)}.explore-note p{font-size:11px;line-height:1.5;margin:5px 0 0;color:#87674d}.experience-overlay,.modal-backdrop{position:fixed;inset:0;z-index:30;background:#3b231bb8;display:flex;align-items:center;justify-content:center;padding:25px}.experience{width:min(1260px,100%);height:min(900px,100%);overflow:auto;background:#fffaf2;border-radius:22px;box-shadow:0 25px 80px #29150d70;position:relative}.close-experience{position:absolute;right:18px;top:18px;width:32px;height:32px;background:#fff7e9;border:1px solid #ebcfab;border-radius:50%;display:grid;place-items:center;z-index:4}.experience-top{min-height:220px;padding:40px 50px 28px;background:linear-gradient(105deg,#fff5e3,#f8d9b6);display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden}.experience-top:after{content:'';width:290px;height:290px;border:1px solid var(--guide-accent);opacity:.2;border-radius:50%;position:absolute;right:170px;top:-110px}.experience-top h1{font:600 37px var(--font-display);margin:0 0 9px}.experience-top p{color:#78604e;font-size:13px;max-width:550px;line-height:1.5}.tag-row{display:flex;gap:10px;flex-wrap:wrap}.tag-row span{display:flex;align-items:center;gap:5px;padding:7px 10px;background:#fff9f0;border-radius:20px;font-size:10px;color:#806653}.experience-guide{display:flex;align-items:end;gap:8px;margin-right:60px;z-index:1}.experience-guide .guide-art{height:190px;width:125px}.guide-label{background:#fff8ee;padding:11px 14px;border-radius:10px 10px 10px 0;box-shadow:0 5px 15px #6c391d1d}.guide-label strong,.guide-label small{display:block}.guide-label strong{font:600 14px var(--font-display)}.guide-label small{font-size:9px;color:#8b6f5b;margin-top:2px}.experience-body{display:grid;grid-template-columns:1.45fr .8fr;gap:18px;padding:25px}.content-tabs{display:flex;gap:22px;border-bottom:1px solid #ead9c2;margin-bottom:17px}.content-tabs button{background:none;padding:0 0 11px;font-size:11px;color:#8b725f}.content-tabs button.active{color:var(--terracotta);border-bottom:2px solid var(--terracotta);font-weight:700}.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.info-cards article{padding:14px;background:#fff5e5;border-radius:12px;display:flex;gap:9px;align-items:flex-start}.info-cards article>svg{color:var(--terracotta);flex:none}.info-cards strong{font:600 12px var(--font-display)}.info-cards p{font-size:10px;color:#846c59;line-height:1.45;margin:6px 0 0}.travel-sections{display:grid;grid-template-columns:1.2fr .8fr;gap:10px;margin-top:12px}.best-time,.cost-card{border:1px solid #ead8bf;border-radius:12px;padding:17px;background:#fffdf9}.section-title{display:flex;align-items:center;gap:9px;color:var(--terracotta)}.section-title h2{font-size:17px;margin-top:1px}.section-title .eyebrow{margin:0}.time-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.time-grid div{padding:9px;background:#f9ecd9;border-radius:8px}.time-grid small,.time-grid strong{display:block}.time-grid small{font-size:9px;color:#957862}.time-grid strong{font-size:11px;margin-top:4px}.cost-line{display:flex;justify-content:space-between;border-bottom:1px dashed #e1c9a9;padding:8px 0;font-size:10px}.cost-line strong{color:#725039}.disclaimer{display:block;color:#a4866c;font-size:8px;margin-top:10px;line-height:1.3}.planner{margin-top:12px;padding:17px;background:#f8ead6}.planner-fields{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:9px;align-items:end;margin-top:14px}.planner label{font-size:9px;color:#856b56}.planner input,.planner select{display:block;width:100%;padding:9px;border:1px solid #e3cbae;border-radius:7px;background:#fffdf8;font-size:11px;margin-top:4px;outline:0}.planner .primary-btn{padding:10px 12px}.itinerary{margin-top:14px;background:#fffaf2;border-radius:9px;padding:12px;font-size:10px;color:#7f654e}.itinerary>strong{display:block;font:600 13px var(--font-display);color:var(--terracotta);margin-bottom:7px}.itinerary div{padding:5px 0;border-bottom:1px solid #efe0cc}.itinerary div:last-child{border:0}.itinerary span{font-weight:700;color:#5d4230;display:inline-block;width:52px}.travel-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.travel-links a{display:flex;align-items:center;gap:5px;background:#fffdf8;border:1px solid #ecd9c2;border-radius:8px;padding:9px 11px;font-size:9px;color:#785941}.travel-links a:hover{color:var(--terracotta);border-color:#d9854a}.chat-panel{
+  border:1px solid #ead6be;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  background:#fffdf9;
+  height:580px;
+  min-height:580px;
+  overflow:hidden;
+  align-self:start;
+}
+
+ .chat-header{padding:14px;background:#f4e0c5;display:flex;align-items:center;gap:9px}.chat-avatar{width:39px;height:39px;border-radius:50%;overflow:hidden;background:#e4bd85}.chat-avatar .guide-art{width:40px;height:53px;margin:2px auto 0}.chat-header strong,.chat-header small{display:block}.chat-header strong{font:600 13px var(--font-display)}.chat-header small{font-size:9px;color:#8f725e;margin-top:2px}.online-dot{width:7px;height:7px;background:#5f9a68;border-radius:50%;margin-left:auto;align-self:flex-start}.chat-messages{
+  padding:16px 13px;
+  flex:1;
+  min-height:0;
+  height:auto;
+  max-height:none;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}.message{display:flex;font-size:10px;line-height:1.5;max-width:92%}.message span{padding:9px 11px;border-radius:10px}.message.guide span{background:#f7ecd9;border-top-left-radius:3px}.message.you{justify-content:flex-end;align-self:flex-end}.message.you span{background:var(--terracotta);color:white;border-top-right-radius:3px}.quick-actions{
+  flex-shrink:0;
+  padding:8px 10px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  border-top:1px solid #f0dfca;
+  margin-top:0;
+}.quick-actions button{border:1px solid #ecd9c2;background:#fffaf2;border-radius:20px;padding:5px 8px;font-size:8px;display:flex;align-items:center;gap:4px;color:#765843}.quick-actions button:hover{color:var(--terracotta);border-color:#d98a51}.chat-input{
+  flex-shrink:0;
+  display:flex;
+  margin:8px 10px;
+  border:1px solid #e5cbaa;
+  border-radius:9px;
+  overflow:hidden;
+  background:#fff;
+}.chat-input input{flex:1;border:0;outline:0;padding:10px;font-size:10px;background:transparent}.chat-input button{width:35px;background:var(--terracotta);color:#fff}.modal-backdrop{background:#3b231b70}.coming-modal{width:min(380px,100%);text-align:center;padding:35px 29px;background:#fffaf1;border:1px solid #ebd3b5;border-radius:18px;position:relative;box-shadow:0 18px 55px #3b231b2b}.coming-modal>button{position:absolute;right:13px;top:13px;background:none;color:#8d705d}.coming-modal>svg{color:var(--terracotta);margin:0 auto 12px}.coming-modal h2{font:600 30px var(--font-display);margin:5px 0}.coming-modal p{font-size:12px;color:#816958;line-height:1.6;margin:10px 0 20px}.coming-modal .primary-btn{margin:auto}.mobile-drawer{display:none}
+/* Tabbed state experience: Culture / Places / Traditions / Food / Travel Plan */
+/* A grid child defaults to min-width:auto, which lets a wide photo row push the
+   whole column past its track and scroll the modal sideways. Pinning both
+   columns to 0 is what actually keeps this layout from overflowing. */
+.experience-main,.chat-panel{min-width:0}
+.experience-main{display:flex;flex-direction:column}
+.content-tabs{gap:6px;overflow-x:auto;scrollbar-width:none;flex:none;padding-bottom:0}
+.content-tabs::-webkit-scrollbar{display:none}
+.content-tabs button{display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:9px 9px 0 0;white-space:nowrap;font-weight:600;transition:color .18s,background .18s}
+.content-tabs button:hover{color:var(--terracotta);background:#fdf1e0}
+.content-tabs button.active{background:#fdf0df}
+.content-tabs button em{font-style:normal;font-size:8px;font-weight:700;background:#eddcc6;color:#8a6a51;border-radius:9px;padding:2px 5px;line-height:1}
+.content-tabs button.active em{background:var(--terracotta);color:#fff8ee}
+.tab-panel{animation:tab-in .28s ease both;min-width:0}
+@keyframes tab-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+.grid-head{margin:16px 0 11px}
+.grid-head .eyebrow{margin-bottom:4px}
+.grid-head h2{font:600 19px var(--font-display);margin:0;color:#4a2b20}
+
+.highlight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:12px}
+.highlight-card{display:flex;flex-direction:column;text-align:left;padding:0;overflow:hidden;background:#fffdf9;border:1px solid #ecdac3;border-radius:13px;color:#4a2b20;transition:transform .2s,box-shadow .2s,border-color .2s}
+.highlight-card:hover{transform:translateY(-3px);border-color:#dd9a5e;box-shadow:0 12px 26px #8b5d3422}
+.highlight-card figure{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;background:#f3e2cc}
+.highlight-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.highlight-card:hover img{transform:scale(1.06)}
+.img-fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--terracotta);opacity:.5}
+.card-tag{position:absolute;left:8px;top:8px;font-style:normal;font-size:8px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;background:#fffaf1e8;color:#8a5227;padding:4px 8px;border-radius:20px;backdrop-filter:blur(4px)}
+.highlight-body{padding:11px 12px 13px;display:flex;flex-direction:column;gap:3px}
+.highlight-body h3{font:600 13px var(--font-display);margin:0;line-height:1.3}
+.highlight-body small{font-size:9px;color:var(--terracotta);font-weight:600}
+.highlight-body p{margin:4px 0 0;font-size:10px;line-height:1.5;color:#846c59}
+
+.grid-empty{margin-top:18px;padding:34px 22px;text-align:center;border:1px dashed #e3cdb0;border-radius:14px;background:#fffdf9}
+.grid-empty>svg{color:var(--terracotta);margin-bottom:8px}
+.grid-empty strong{display:block;font:600 15px var(--font-display)}
+.grid-empty p{font-size:11px;color:#8b725f;margin:6px 0 0}
+
+/* Lightbox */
+.lightbox-backdrop{position:fixed;inset:0;z-index:40;background:#2c170fcc;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;animation:tab-in .2s ease both}
+.lightbox{width:min(560px,100%);max-height:90vh;overflow:auto;background:#fffaf2;border-radius:17px;position:relative;box-shadow:0 26px 70px #29150d70}
+.lightbox img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.lightbox-close{position:absolute;right:12px;top:12px;width:31px;height:31px;border-radius:50%;background:#fffaf1e8;color:#7a563d;display:grid;place-items:center;backdrop-filter:blur(4px)}
+.lightbox-body{padding:19px 22px 23px}
+.lightbox-body h2{font:600 24px var(--font-display);margin:2px 0 3px}
+.lightbox-body small{font-size:11px;color:#98795f;font-weight:600}
+.lightbox-body p{font-size:12px;line-height:1.65;color:#7b6250;margin:11px 0 0}
+
+/* Travel Plan tab */
+.plan-intro{font-size:12px;line-height:1.65;color:#7b6250;margin:16px 0 4px;padding:13px 15px;background:#fdf1e0;border-radius:11px;border-left:3px solid var(--terracotta)}
+.cost-line span{display:flex;flex-direction:column;gap:2px}
+.cost-line span small{font-size:8px;color:#a4866c}
+.cost-total{display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding:9px 11px;background:#f6e6cd;border-radius:9px;font-size:10px;font-weight:700;color:#6d4b33}
+.cost-total strong{font-size:12px;color:var(--terracotta)}
+.cost-total.per-person{background:none;padding:4px 11px 0;font-weight:600;color:#8b725f}
+.cost-total.per-person strong{font-size:10px;color:#7a5a41}
+.itinerary div{display:grid;grid-template-columns:52px 1fr;gap:2px 8px;padding:8px 0}
+.itinerary div b{font-size:11px;color:#5d4230}
+.itinerary div p{grid-column:2;margin:0;font-size:10px;line-height:1.5;color:#8b725f}
+.itinerary span{align-self:start}
+
+.reach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin-top:12px}
+.reach-grid article{padding:14px;background:#fffdf9;border:1px solid #ead8bf;border-radius:12px}
+.reach-grid article>svg{color:var(--terracotta)}
+.reach-grid strong{display:block;font:600 12px var(--font-display);margin:7px 0 4px}
+.reach-grid p{margin:0;font-size:10px;line-height:1.5;color:#846c59}
+
+.plan-lists{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.plan-lists>div{padding:16px;background:#fffdf9;border:1px solid #ead8bf;border-radius:12px}
+.plan-lists ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.plan-lists li{position:relative;padding-left:15px;font-size:10px;line-height:1.55;color:#846c59}
+.plan-lists li:before{content:'';position:absolute;left:0;top:5px;width:5px;height:5px;border-radius:50%;background:var(--terracotta);opacity:.6}
+@media(max-width:1100px){.topbar{padding-left:5%;gap:18px}.topbar nav{gap:16px}.brand{min-width:215px}.lower-grid{grid-template-columns:1fr 1fr}.journey{grid-column:1/-1}.culture-grid{grid-template-columns:repeat(3,1fr)}.hero-panel{grid-template-columns:1fr .85fr 1fr}.hero-copy{padding-left:28px}.experience-body{grid-template-columns:1fr}.chat-panel{min-height:430px}.chat-messages{max-height:200px}}
+@media(max-width:760px){.app-shell{padding-bottom:58px}.topbar{height:62px;padding:0 17px;gap:12px}.mobile-menu{display:block}.brand{min-width:0;flex:1}.brand-mark{width:31px;height:31px}.brand strong{font-size:16px}.brand small{font-size:8px}.topbar nav,.topbar .language{display:none}.profile-dot{width:28px;height:28px}.side-nav{display:none}.content{margin:0;padding:12px 13px 0}.bottom-nav{left:0;bottom:0;height:52px}.bottom-nav button{flex-direction:column;gap:2px;font-size:8px}.hero-panel{display:flex;flex-direction:column;min-height:0;border-radius:18px}.hero-copy{padding:28px 23px 20px}.hero-copy h1{font-size:37px}.hero-copy p{font-size:12px}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions button{width:100%}.stats{margin-top:23px;gap:11px;justify-content:space-between}.stats div{padding-right:9px}.stats strong{font-size:16px}.stats span{font-size:8px}.hero-map{padding:0 32px 5px;position:absolute;right:0;top:180px;width:48%;opacity:.38}.hero-map .map-wrap{max-width:160px}.hero-guide{padding:0 15px 15px;align-items:stretch}.guide-scene{aspect-ratio:1.3;min-height:0}.hero-guide-card{top:16px;right:12px;left:auto;font-size:14px;padding:10px 12px;max-width:62%}.audio-card{width:min(215px,70%);right:12px;bottom:14px;padding:11px 13px}.culture-grid{grid-template-columns:repeat(2,1fr);gap:9px}.culture-card{min-height:158px}.card-art{height:60px}.section-heading{margin-top:23px}.section-heading h2{font-size:18px;text-align:center}.lower-grid{grid-template-columns:1fr;gap:10px}.state-picker{grid-template-columns:.8fr 1.2fr}.journey{grid-column:auto}.panel{padding:16px}.explore-page{padding-top:25px}.explore-intro{display:block;margin-bottom:18px}.explore-intro h1{font-size:36px}.explore-intro p{font-size:12px}.search-box{margin-top:17px}.search-box input{width:100%}.explore-layout{grid-template-columns:1fr}.map-panel{min-height:0}.big-map{height:auto;padding:20px 0}.big-map .map-wrap{max-width:300px}.explore-side{gap:10px}.experience-overlay{padding:0}.experience{height:100%;border-radius:0}.experience-top{padding:29px 20px 18px;min-height:230px}.experience-top h1{font-size:30px}.experience-top p{font-size:11px;max-width:58%}.experience-guide{margin-right:0;position:absolute;right:16px;bottom:0}.experience-guide .guide-art{height:150px;width:99px}.guide-label{display:none}.experience-body{padding:16px 13px;gap:12px}.info-cards{grid-template-columns:1fr}.travel-sections{grid-template-columns:1fr}.planner-fields{grid-template-columns:1fr 1fr}.planner-fields .primary-btn{grid-column:1/-1}.chat-panel{min-height:520px}.map-panel-head{display:block}.legend{margin-top:10px}.mobile-drawer{display:flex;position:fixed;top:62px;left:0;right:0;z-index:9;background:#fffaf1;border-bottom:1px solid #ebd8c0;box-shadow:0 8px 20px #3c21140d;padding:9px 17px;gap:18px}.mobile-drawer button{background:none;font-size:11px;color:#754f38}.mobile-drawer button:hover{color:var(--terracotta)}}
+@media(max-width:400px){.culture-grid{grid-template-columns:1fr}.stats{gap:6px}.stats div{padding-right:5px}.hero-copy h1{font-size:33px}.hero-map{top:170px}.info-cards article p{font-size:9px}}
+/* ================================
+   GLOBAL LANGUAGE DROPDOWN
+   ================================ */
+
+.language {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.language-menu {
+  position: absolute;
+  top: 68px;
+  right: 75px;
+  width: 190px;
+  padding: 8px;
+  background: #fffaf2;
+  border: 1px solid #ead7c1;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(70, 40, 25, 0.15);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.language-menu button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 11px 13px;
+  border-radius: 9px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  color: #4a2b20;
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background: #f5dfc5;
+  color: #c95b25;
+}
+
+/* ===== Bharat Connect language selector ===== */
+.language-selector{position:relative;z-index:1000;flex:none}
+.language-trigger{height:40px;min-width:112px;padding:0 13px;border:1px solid #e6c79f;border-radius:22px;background:#fffaf1;color:#5c4030;display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;transition:.2s;box-shadow:0 2px 0 #f2dfc7}
+.language-trigger:hover,.language-trigger.open{border-color:#c75f23;background:#fff6e9;color:#a8471b}
+.language-trigger .language-chevron{transition:transform .2s}
+.language-trigger.open .language-chevron{transform:rotate(180deg)}
+.language-menu{position:absolute;top:calc(100% + 9px);right:0;width:190px;padding:7px;background:#fffaf1;border:1px solid #e5cfb2;border-radius:16px;box-shadow:0 14px 32px rgba(70,40,25,.14);display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.language-menu:before{content:"";position:absolute;right:30px;top:-6px;width:11px;height:11px;background:#fffaf1;border-left:1px solid #e5cfb2;border-top:1px solid #e5cfb2;transform:rotate(45deg)}
+.language-menu button{position:relative;width:100%;min-height:43px;border:0;border-radius:10px;background:transparent;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;text-align:left;color:#563b2d;font-family:var(--font-body)}
+.language-menu button:hover{background:#f7ead8;color:#a8471b}
+.language-menu button.selected{background:#fff0dc;color:#a8471b}
+.language-menu button>span{display:flex;flex-direction:column;gap:1px}
+.language-menu button strong{font-size:12px;font-weight:600}
+.language-menu button small{font-size:9px;color:#9a7a62}
+.language-menu button>svg{color:#c75f23}
+.language-spin{animation:language-spin .9s linear infinite}
+@keyframes language-spin{to{transform:rotate(360deg)}}
+/* Compass sits in reserved padding to the right of the map, never over it. */
+.map-wrap.has-compass{padding-right:46px}
+.compass-rose{position:absolute;top:4px;right:0;width:40px;height:40px;flex:none;opacity:.5;pointer-events:none;transition:transform .6s ease,opacity .3s ease;z-index:1}
+.map-wrap.has-compass:hover .compass-rose{transform:rotate(45deg);opacity:.75}
+.message.thinking span{opacity:.55;animation:message-thinking 1.1s ease-in-out infinite}
+@keyframes message-thinking{0%,100%{opacity:.35}50%{opacity:.8}}
+@media(max-width:760px){.language-selector{display:block}.language-trigger{min-width:96px;height:36px;font-size:11px}.language-menu{right:0;width:180px}}
+@media(max-width:1100px){.highlight-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+@media(max-width:760px){.content-tabs{gap:3px;margin-bottom:12px}.content-tabs button{padding:8px 10px;font-size:10px}.content-tabs button em{display:none}.highlight-grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}.highlight-body{padding:10px}.highlight-body p{font-size:9px}.grid-head h2{font-size:17px}.plan-lists{grid-template-columns:1fr}.reach-grid{grid-template-columns:1fr}.lightbox-backdrop{padding:14px}.lightbox-body{padding:16px 17px 19px}.lightbox-body h2{font-size:20px}}
+@media(max-width:400px){.highlight-grid{grid-template-columns:1fr 1fr;gap:8px}.highlight-body h3{font-size:12px}.itinerary div{grid-template-columns:44px 1fr}}
+/* Culture page */
+.culture-page{max-width:1180px;margin:0 auto;padding:30px 26px 70px;color:#4a2b20}
+.culture-hero{text-align:center;margin-bottom:22px}
+.culture-hero h1{font:600 clamp(32px,4vw,52px)/1.06 var(--font-display);margin:10px 0 10px;letter-spacing:-1.2px;color:#43271e}
+.culture-hero p{max-width:640px;margin:0 auto;font-size:13px;line-height:1.75;color:#7b6250}
+.region-pills{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:24px}
+.region-pills button{border:1px solid #decbb7;background:#fffaf2;color:#5b3a2c;border-radius:999px;padding:9px 19px;font-weight:600;font-size:12px;transition:.18s}
+.region-pills button:hover{border-color:#d9854a;color:var(--terracotta)}
+.region-pills button.active{color:#fffaf2}
+.culture-band{border:1px solid #ead7c1;border-radius:20px;padding:24px 26px;margin-bottom:22px}
+.culture-band .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.culture-band h2{font:600 28px var(--font-display);margin:0 0 7px;color:#43271e}
+.culture-band p{max-width:800px;margin:0;font-size:13px;line-height:1.7;color:#6d5144}
+.culture-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:11px;margin-bottom:8px}
+.culture-index button{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;background:#fffdf9;border:1px solid #ecdac3;border-radius:14px;color:#4a2b20;transition:.2s}
+.culture-index button:hover{border-color:#dd9a5e;transform:translateY(-2px);box-shadow:0 10px 22px #8b5d341c}
+.index-icon{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center}
+.index-body{flex:1;min-width:0}
+.index-body strong{display:flex;align-items:center;gap:7px;font:600 14px var(--font-display)}
+.index-body strong em{font-style:normal;font-size:9px;font-weight:700;background:#eddcc6;color:#8a6a51;border-radius:9px;padding:2px 6px}
+.index-body small{display:block;margin-top:4px;font-size:10px;line-height:1.5;color:#8b725f}
+.culture-section{scroll-margin-top:92px}
+.culture-footer{margin-top:30px;border:1px solid #ead7c1;border-radius:18px;background:#fffdf9;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.culture-footer .eyebrow{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.culture-footer p{margin:0;font-size:12px;line-height:1.6;color:#7b6250;max-width:520px}
+.culture-footer button{display:flex;align-items:center;gap:8px;border:1px solid;color:#fff;border-radius:999px;padding:11px 19px;font-weight:700;font-size:12px;transition:.2s}
+.culture-footer button:hover{filter:brightness(1.07);transform:translateY(-2px)}
+@media(max-width:760px){.culture-page{padding:18px 14px 60px}.culture-band{padding:18px 17px;border-radius:16px}.culture-band h2{font-size:22px}.culture-index{grid-template-columns:1fr}.culture-footer{padding:17px}.culture-footer button{width:100%;justify-content:center}}
+/* ---- Typographic polish ---------------------------------------------- */
+/* Yatra One is the cultural voice of the brand. It carries the wordmark, the
+   hero's emphasised word and the section flourishes — and nothing else, so it
+   stays special instead of becoming noise. */
+.brand strong{font-family:var(--font-accent);font-weight:400;font-size:22px;letter-spacing:0;color:var(--deep)}
+.brand small{font-family:var(--font-body);font-weight:600;letter-spacing:.3px;color:var(--muted)}
+.hero-copy h1 em,.explore-intro h1 em,.experience-top h1 em{font-family:var(--font-accent);font-weight:400;font-style:normal;color:var(--terracotta);letter-spacing:.5px}
+.section-heading h2,.culture-hero h1{font-family:var(--font-display)}
+
+/* Eyebrows read as small-caps labels rather than shouty all-caps tracking. */
+.eyebrow{font-family:var(--font-body);font-weight:800;font-size:10px;letter-spacing:1.6px;color:var(--terracotta)}
+
+/* Headings: Fraunces is high-contrast, so it wants slightly tighter tracking
+   and a little more colour weight than Playfair did. */
+.hero-copy h1,.explore-intro h1{letter-spacing:-1.6px;color:var(--ink)}
+.culture-band h2,.grid-head h2,.section-title h2{color:var(--ink);letter-spacing:-.3px}
+.highlight-body h3{letter-spacing:-.15px;color:var(--ink)}
+.experience-top h1{letter-spacing:-1px;color:var(--ink)}
+.lightbox-body h2{letter-spacing:-.5px;color:var(--ink)}
+
+/* Body copy sits one step darker than before for comfortable reading. */
+.hero-copy p,.explore-intro p,.culture-band p,.culture-hero p{color:var(--ink-soft)}
+.highlight-body p,.reach-grid p,.plan-lists li,.info-cards p{color:#6f5a49}
+.highlight-body small{font-weight:700;letter-spacing:.2px}
+
+/* Numerals line up in the stats row and every rupee figure. */
+.stats strong,.cost-line strong,.cost-total strong,.time-grid strong,.index-body strong em,.content-tabs button em{font-variant-numeric:tabular-nums}
+.stats strong{font-family:var(--font-display);font-weight:700;color:var(--terracotta)}
+
+/* The plum accent gives tags a second colour so the palette isn't one note. */
+.card-tag{color:var(--plum);font-family:var(--font-body);font-weight:800}
+.tag-row span{font-family:var(--font-body);font-weight:600;color:var(--ink-soft)}
+.guide-label strong,.chat-header strong,.active-guide-list strong{font-family:var(--font-display);font-weight:700;letter-spacing:-.2px}
+.itinerary>strong,.culture-index .index-body strong{font-family:var(--font-display);font-weight:700}
+.primary-btn,.outline-btn,.region-pills button,.culture-footer button{font-family:var(--font-body);font-weight:800;letter-spacing:.2px}
+.message span,.chat-input input{font-family:var(--font-body)}
+/* --terracotta is the brand fill. At 4.3:1 on cream it is fine for icons,
+   borders, fills and large display type, but short of AA for small text — so
+   anything under ~18px uses the darker --accent-text (6.6:1) instead. */
+:root{--accent-text:#98400f}
+.eyebrow,.highlight-body small,.all-states,
+.topbar nav button.active,.topbar nav button:hover,
+.side-nav button.active,.side-nav button:hover,
+.bottom-nav button.active,.bottom-nav button:hover,
+.content-tabs button.active,.content-tabs button:hover,
+.cost-total strong,.travel-links a:hover,.quick-actions button:hover,
+.region-pills button:hover,.itinerary>strong{color:var(--accent-text)}
+/* Two 8px labels sat at 4.0–4.4:1; --muted clears 5.3:1 at the same size. */
+.state-list button span small,.guide-card>small{color:var(--muted)}
+/* Remaining sub-4.5:1 text at small sizes, tightened without changing the
+   brand fills used for icons, borders and large display type. */
+.stats strong{color:var(--accent-text)}
+.audio-line span,.progress-row>strong,.mini-note{color:#6f5a49}
+ 

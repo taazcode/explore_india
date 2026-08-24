@@ -59,6 +59,7 @@ import {
   PageFrame,
   PanelCorners,
 } from "./components/Ornaments";
+import { Analytics } from "@vercel/analytics/react";
 import { askGuide, type GroqMessage } from "./lib/groq";
 import { allStates, searchStates, type StateEntry } from "./data/allStates";
 import { GUIDE_VOICES, speak, stopSpeech } from "./lib/tts";
@@ -1705,6 +1706,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <AppContent />
+      <Analytics />
     </LanguageProvider>
   );
 }

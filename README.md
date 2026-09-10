@@ -30,17 +30,6 @@ Environment Variables
 
 (List any required API keys or environment variables, e.g. an AI/LLM API key, if applicable.)
 
-VITE_API_KEY=your_api_key_here
-Project Structure
-.
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── ...
-├── public/
-└── README.md
-
-(Update this to reflect the actual folder structure.)
 
 Deployment
 
